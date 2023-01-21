@@ -14,9 +14,9 @@ public interface AdminDao {
 	
 	String addProjectToDepartment(String projectName,int deptId) throws DepartmentException;
 	
-	String assignManagerToDepartment(String username,int deptId) throws EmployeeException , DepartmentException;
+	String assignManagerToDepartment(String username,int deptId) throws EmployeeException ;
 	
-	String assignEmployeeToDepartment(String username,String deptId)  throws EmployeeException , DepartmentException;
+	String assignEmployeeToDepartment(String username,int deptId)  throws EmployeeException , DepartmentException;
 	
 	String updateEmployeeLeaveStatus(int approved , int deptId ) throws DepartmentException;
 	
@@ -28,7 +28,7 @@ public interface AdminDao {
 	
 	String verifyEmpAccount(String username,int accountActivation) throws EmployeeException;
 	
-	boolean loginAdmin (String username,String password) throws EmployeeException;
+	String loginAdmin (String username,int password) throws EmployeeException;
 	
 	
 	
