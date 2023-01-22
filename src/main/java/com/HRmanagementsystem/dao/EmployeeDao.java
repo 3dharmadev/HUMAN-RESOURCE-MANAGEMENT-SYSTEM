@@ -14,7 +14,9 @@ public interface EmployeeDao {
 	
 	Employee employeeDetails(String username) throws EmployeeException;
 	
-	String updateProjectCompletionStatus(String username,String status) throws EmployeeException; 
+	String updateProjectCompletionStatus(String username,String status) throws EmployeeException;
+	
+	String updatePassword(String username,String new_password) throws EmployeeException;
 	
 	
 	

@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.HRmanagementsystem.dao.AdminDao;
 import com.HRmanagementsystem.dao.AdminDaoImpl;
+import com.HRmanagementsystem.dao.EmployeeDao;
+import com.HRmanagementsystem.dao.EmployeeDaoImpl;
 import com.HRmanagementsystem.exception.DepartmentException;
 import com.HRmanagementsystem.exception.EmployeeException;
 import com.HRmanagementsystem.model.Department;
@@ -21,8 +23,9 @@ public class usecases {
 class abc{
 	public static void main(String[] args) throws EmployeeException, DepartmentException {
 		AdminDao dao=new AdminDaoImpl();
-		Department department=new Department();
-		department.setDepartmentName("Information Technology");
+		//Department department=new Department();
+		//department.setDepartmentName("Information Technology");
+		EmployeeDao employeeDao=new EmployeeDaoImpl();
 		//System.out.println(dao.addNewDepartment(department));
 //		try {
 //			System.out.println(dao.addProjectToDepartment("WhatsApp Clone", 416));
@@ -41,14 +44,31 @@ class abc{
 //		System.out.println(employee);
 //	}
 		
-//		List<LeaveDays> days=dao.leaveReports();
-//		for (LeaveDays leaveDays : days) {
-//			System.out.println(leaveDays);
-//		}
-		
-		List<Department> departments=dao.deptList();
-		for (Department department2 : departments) {
-			System.out.println(department2);
+		List<LeaveDays> days=dao.leaveReports();
+		for (LeaveDays leaveDays : days) {
+			System.out.println(leaveDays);
 		}
+		
+//		List<Department> departments=dao.deptList();
+//		for (Department department2 : departments) {
+//			System.out.println(department2);
+//		}
+//		Employee employee=new Employee();
+//		employee.setEmail("putin@gmail.com");
+//		employee.setDateOfBirth("1968-02-15");
+//		employee.setName("Vlamadir putin");
+//		employee.setPassword("MEEPUTIN");
+//System.out.println(employeeDao.signupEmployee(employee));
+		//System.out.println(employeeDao.empLogin("ram@gmail.com", "1234"));
+//		LeaveDays leaveDays=new LeaveDays();
+//		leaveDays.setUserName("putin@gmail.com");
+//		leaveDays.setLeaveFrom("2023-01-23");
+//		leaveDays.setLeaveTo("2023-01-28");
+//		leaveDays.setReason("Marriage cerimony");
+//		System.out.println(employeeDao.requestForLeave(leaveDays));
+		
+		//System.out.println(employeeDao.employeeDetails("ram@gmail.com"));
+		//System.out.println(employeeDao.updateProjectCompletionStatus("deba@gmail.com", "50% completed"));
+		//System.out.println(employeeDao.updatePassword("deba@gmail.com", "753014"));
 	}
 }
