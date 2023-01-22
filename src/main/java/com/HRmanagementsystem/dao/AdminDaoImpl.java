@@ -34,9 +34,10 @@ public class AdminDaoImpl implements AdminDao{
 			    ps.setString(2, department.getDepartmentName());
 //			    System.out.println(department);
 			    int res=ps.executeUpdate();
-			    if(res>0) messageString="Inserted...";
+			    if(res>0) messageString="Department added successfully.....";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			messageString=e.getMessage();
 			e.printStackTrace();
 		}
 		
@@ -45,7 +46,7 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public String addProjectToDepartment(String projectName, int deptId) throws DepartmentException {
-     String messageString="Something went wrong! Try again...";
+     String messageString="Wrong Department ID!";
 		
 		try(Connection conn=DB_Connect.getConnection()){
 			 
@@ -67,7 +68,7 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public String assignManagerToDepartment(String username, int deptId) throws EmployeeException {
-       String messageString="Something went wrong! Try again...";
+       String messageString="Wrong Input! Try again...";
 		
 		try(Connection conn=DB_Connect.getConnection()){
 			 
@@ -81,7 +82,9 @@ public class AdminDaoImpl implements AdminDao{
 
 		} catch (SQLException  e) {
 			System.out.println(e.getMessage());
-		    throw new EmployeeException("Please add existing employee as department manager");
+			messageString=e.getMessage();
+		    throw new EmployeeException("This username already assigned to another department as a manager"
+		    		+ "<br> Or Problem with The Entered Details Please Enter Details Carefully");
 
 		}
 		
@@ -90,7 +93,7 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public String assignEmployeeToDepartment(String username, int deptId)	throws EmployeeException, DepartmentException {
-		 String messageString="Something went wrong! Try again...";
+		 String messageString="Wrong Input! Try again...";
 			
 			try(Connection conn=DB_Connect.getConnection()){
 				 
@@ -100,12 +103,13 @@ public class AdminDaoImpl implements AdminDao{
 				    ps.setString(2, username);
 				    int res=ps.executeUpdate();
 				   
-				    if(res>0) messageString="employee  added to department number-> "+deptId;
+				    if(res>0) messageString=username+" will going to work under department number: "+deptId;
 
 
 			} catch (SQLException  e) {
+				
 				System.out.println(e.getMessage());
-			    throw new EmployeeException(e.getMessage());
+			    throw new EmployeeException("Wrong Username or Department Id");
 
 			}
 			
@@ -139,7 +143,7 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public String verifyEmpAccount(String username, int accountActivation) throws EmployeeException {
-		 String messageString="Something went wrong!..";
+		 String messageString="Wrong UserName!";
 			
 			try(Connection conn=DB_Connect.getConnection()){
 				 
@@ -149,8 +153,8 @@ public class AdminDaoImpl implements AdminDao{
 				    ps.setString(2, username);
 				    int res=ps.executeUpdate();
 				   
-				    if(res>0 && accountActivation==0) messageString="Employee account rejected...";
-				    else if(res>0 && accountActivation==1) messageString="successfully verified...";
+				    if(res>0 && accountActivation==0) messageString=username+" Employee Account Deactivated &#10003";
+				    else if(res>0 && accountActivation==1) messageString=username+" Employee Successfully Activated &#10003";
 				     else   throw new EmployeeException("username not found!");
 
 
@@ -228,10 +232,11 @@ public class AdminDaoImpl implements AdminDao{
 		//            | id | username       | leaveFrom  | leaveTo    | approved | reason   |
 		            while (rs.next()){
 		               LeaveDays days=new LeaveDays();
+		                    days.setID(rs.getInt("id"));
 		                   days.setUserName(rs.getString("username"));
 		                   days.setLeaveFrom(rs.getString("leaveFrom"));
 		                   days.setLeaveTo(rs.getString("leaveTo"));
-		                   days.setApproved(rs.getBoolean("approved"));
+		                   days.setApproved(rs.getString("approved"));
 		                   days.setReason(rs.getString("reason"));
 		                   leaveDays.add(days);
 		            }
