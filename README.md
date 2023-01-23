@@ -1,5 +1,18 @@
 # ripe-education-3601
 
+Role of Admin:
+Admin can add new Departments.
+Admin can view and update the Departments manager and project.
+Admin can activate or deactivate employee account.
+Admin can also transfer them to other departments.
+Admin can grant or deny employee leave request.
+
+Role of Employee:
+ Employee can view and update his profile.
+Employee can login and logout.
+Employee can also request for leaves.
+Employee can update working project status.
+
 Root Page![Screenshot (292)](https://user-images.githubusercontent.com/69399810/213988671-72125f80-f238-41c8-8b73-7f176a9ad615.png)
 
 Login Page![Screenshot (293)](https://user-images.githubusercontent.com/69399810/213988748-3c250245-300c-4011-9e22-18f8cbec701a.png)
