@@ -1,7 +1,7 @@
 # ripe-education-3601
 
 Role of Admin: <br>
-Admin can add new Departments.<br>
+<h1>Admin can add new Departments.</h1><br>
 Admin can view and add/update the Departments manager and project.<br> 
 Admin can activate or deactivate employee account.<br> 
 Admin can also transfer them to other departments.<br>
