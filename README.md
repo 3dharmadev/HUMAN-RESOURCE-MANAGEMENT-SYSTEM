@@ -8,11 +8,11 @@
 <h4>Admin can grant or deny employee leave request.</h4><br>
 <h4>Admin can login ,logout from website.</h4>
 
-Role of Employee: <br>
-<h4></h4> Employee can view and update his profile. <br>
-<h4></h4>Employee can login and logout. <br>
-<h4></h4>Employee can also request for leaves. <br>
-<h4></h4>Employee can update working project status. <br>
+<h1> Role of Employee:</h1> <br>
+<h4> Employee can view and update his profile.</h4> <br>
+<h4>Employee can login and logout. </h4><br>
+<h4>Employee can also request for leaves. </h4><br>
+<h4>Employee can update working project status. </h4><br>
 
 Root Page![Screenshot (292)](https://user-images.githubusercontent.com/69399810/213988671-72125f80-f238-41c8-8b73-7f176a9ad615.png)
 
