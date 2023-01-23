@@ -17,3 +17,8 @@ Admin can add new department
 If Employee Account not verified then exception page 
 ![Screenshot (300)](https://user-images.githubusercontent.com/69399810/213989295-ec349b88-c846-41e3-a172-da8a497ed302.png)
 
+ER diagram 
+
+
+
+![Screenshot (301)](https://user-images.githubusercontent.com/69399810/214001738-aa369761-c36f-425b-ad5e-46808de64b4e.png)
