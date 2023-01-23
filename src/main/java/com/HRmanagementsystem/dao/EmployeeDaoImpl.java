@@ -14,7 +14,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public String empLogin(String username, String password) throws EmployeeException {
-	String messageString="Something went wrong!..";
+	String messageString="Account not Found!";
 		
 		try(Connection conn=DB_Connect.getConnection()){
 			 
@@ -36,7 +36,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
                 ResultSet rs2=ps2.executeQuery();
                 
-			     if(rs2.next())  throw new EmployeeException("account not verified ");
+			     if(rs2.next())  throw new EmployeeException("account not verified!");
 
 
 		} catch (SQLException  e) {
@@ -92,7 +92,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		    	
 		    	if(res>0) message="successfully applied... wait for review";
 		     } catch (SQLException e) {
-				message="Wrong username...";
+				message="UserName Not Found!";
 				e.printStackTrace();
 			}
 		

@@ -117,19 +117,19 @@ public class AdminDaoImpl implements AdminDao{
 	}
 
 	@Override
-	public String updateEmployeeLeaveStatus(int approved, int id) throws DepartmentException {
+	public String updateEmployeeLeaveStatus(String approved, int id) throws DepartmentException {
 		 String messageString="Ohh Ohh Something went wrong...";
 			
 			try(Connection conn=DB_Connect.getConnection()){
 				 
 				 PreparedStatement ps= conn.prepareStatement("UPDATE applyLeave SET approved =? where id=?");
-				
-				    ps.setInt(1,approved);
+				  int approved2=Integer.parseInt(approved.trim());
+				    ps.setInt(1,approved2);
 				    ps.setInt(2, id);
 				    int res=ps.executeUpdate();
 				   
-				    if(res>0 && approved==0) messageString="Employee denied for leave...";
-				    if(res>0 && approved==1) messageString="Employee granted for leave...";
+				    if(res>0 && approved2==0) messageString="Employee denied for leave...";
+				    if(res>0 && approved2==1) messageString="Employee granted for leave...";
 
 
 			} catch (SQLException  e) {

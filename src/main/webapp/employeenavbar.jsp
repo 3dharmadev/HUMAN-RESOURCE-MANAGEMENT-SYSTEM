@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<title>HR Management Application</title>
+<title>Employee Home</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -27,7 +27,7 @@
 </head>
 <body>
 
-     <%
+ <%
 
    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
    
@@ -36,9 +36,10 @@
    response.setHeader("Expires", "0");  
 
 
-   if(session.getAttribute("username")==null) response.sendRedirect("loginadmin.jsp");
+   if(session.getAttribute("empusername")==null) response.sendRedirect("loginemployee.jsp");
    
 %>
+
 	<header>
 		<nav id="nav" class="navbar navbar-expand-md navbar-dark">
 			<div>
@@ -47,12 +48,11 @@
 			</div>
 
 			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/emplist"	class="nav-link">Employee List</a></li>
-				<li> <a href="<%=request.getContextPath()%>/leavereq" class="nav-link">Leave Reports</a> </li>
-				<li> <a href="<%=request.getContextPath()%>/deptlist" class="nav-link">Department List</a> </li>
+				<li><a href="<%=request.getContextPath()%>/empdetails"	class="nav-link">Your Details</a></li>
 				
-				<li> <a href="createANewDepartment.jsp" class="nav-link">Add Department</a> </li>
-			  <form id="form1" action="logout"><input type="submit"  class="nav-link" value="logout"></form>
+				<li> <a href="applyLeave.jsp" class="nav-link">Request for leave</a> </li>
+				<li> <a href="updateProjectcompletion.jsp" class="nav-link">Update Project Status</a> </li>
+			  <form id="form1" action="logoutemp"><input type="submit"  class="nav-link" value="logout"></form>
 			</ul>
 		</nav>
 		 
