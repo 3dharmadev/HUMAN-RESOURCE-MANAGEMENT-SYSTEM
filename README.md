@@ -2,10 +2,11 @@
 
 Role of Admin: <br>
 Admin can add new Departments.<br>
-Admin can view and update the Departments manager and project.<br> 
+Admin can view and add/update the Departments manager and project.<br> 
 Admin can activate or deactivate employee account.<br> 
 Admin can also transfer them to other departments.<br>
 Admin can grant or deny employee leave request.<br>
+Admin can login ,logout from website.
 
 Role of Employee: <br>
  Employee can view and update his profile. <br>
