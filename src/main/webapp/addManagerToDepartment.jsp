@@ -50,12 +50,11 @@
 <h1>Add Manager To Department</h1>
 
 <form id="f2" action="addManager" method="post">
-   Enter manager email: <input type="text" name="projectManager" placeholder="Enter Existing Employee username as manager" maxlength="30">
-   Enter Department Id: <input type="number" name="deptId" placeholder="Enter Department Id" maxlength="3">
+  <input type="text"  name="projectManager" placeholder="Enter Existing Employee username as manager" maxlength="30">
+  <input type="hidden" value=<%=request.getParameter("did")%> name="deptId" placeholder="Enter Department Id" maxlength="3">
    
      <input    type="submit" style="background-color: rgb(13, 0, 96); color: azure;" value="Add Manager To Department">
      
-
 </form>
          </body>
 </html>

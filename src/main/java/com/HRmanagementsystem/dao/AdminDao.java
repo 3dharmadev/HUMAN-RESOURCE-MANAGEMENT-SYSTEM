@@ -18,7 +18,7 @@ public interface AdminDao {
 	
 	String assignEmployeeToDepartment(String username,int deptId)  throws EmployeeException , DepartmentException;
 	
-	String updateEmployeeLeaveStatus(int approved , int deptId ) throws DepartmentException;
+	String updateEmployeeLeaveStatus(String approved , int deptId ) throws DepartmentException;
 	
 	   List<Employee> employeeList();
 	

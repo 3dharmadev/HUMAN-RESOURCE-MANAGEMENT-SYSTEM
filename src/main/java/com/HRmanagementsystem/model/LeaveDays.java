@@ -6,10 +6,15 @@ public class LeaveDays {
 	private String userName;
 	private String leaveFrom;
 	private String leaveTo;
-	private String approved;
+	
 	private String reason;
-	
-	
+	private String approved;
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
 	public String getUserName() {
 		return userName;
 	}
@@ -28,31 +33,26 @@ public class LeaveDays {
 	public void setLeaveTo(String leaveTo) {
 		this.leaveTo = leaveTo;
 	}
-	public String isApproved() {
-		return approved;
-	}
-	public void setApproved(String approved) {
-		this.approved = approved;
-	}
 	public String getReason() {
 		return reason;
 	}
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	public int getID() {
-		return ID;
+	public String getApproved() {
+		return approved;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setApproved(String approved) {
+		this.approved = approved;
 	}
 	@Override
 	public String toString() {
 		return "LeaveDays [ID=" + ID + ", userName=" + userName + ", leaveFrom=" + leaveFrom + ", leaveTo=" + leaveTo
-				+ ", approved=" + approved + ", reason=" + reason + "]";
+				+ ", reason=" + reason + ", approved=" + approved + "]";
 	}
-	 
 	
+	
+	 
 	
 	
 

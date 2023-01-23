@@ -41,8 +41,8 @@
 <body>
 
 <form id="f2" action="addProject" method="post">
-   Enter Project name with small description:   <input type="text" name="projectName" placeholder="Enter Project Name With Small Description" maxlength="35">
-   Enter Department Id: <input type="number" name="deptId" placeholder="Enter Department Id" maxlength="3">
+   Enter Project name with small description:   <input  type="text" name="projectName" placeholder="Enter Project Name With Small Description" maxlength="35">
+   <input type="hidden" value="<%=request.getParameter("id") %>" name="deptId" placeholder="Enter Department Id" maxlength="3">
    
      <input    type="submit" style="background-color: rgb(13, 0, 96); color: azure;" value="Create Department">
      
