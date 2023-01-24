@@ -14,7 +14,6 @@
 <h4>Employee can also request for leaves. </h4><br>
 <h4>Employee can update working project status. </h4><br>
 
-Root Page![Screenshot (292)](https://user-images.githubusercontent.com/69399810/213988671-72125f80-f238-41c8-8b73-7f176a9ad615.png)
 
 Login Page![Screenshot (293)](https://user-images.githubusercontent.com/69399810/213988748-3c250245-300c-4011-9e22-18f8cbec701a.png)
 
