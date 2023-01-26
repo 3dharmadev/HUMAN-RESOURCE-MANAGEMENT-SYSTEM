@@ -10,6 +10,7 @@ import com.HRmanagementsystem.exception.EmployeeException;
 import com.HRmanagementsystem.model.*;
 import com.mysql.cj.Session;
 
+
 import java.util.*;
 import java.lang.*;
 import java.net.URLEncoder;
@@ -48,6 +49,8 @@ public class EmployeeServlet extends HttpServlet {
 			case "/empdetails":
 				getEmpDetails(request, response);
 				break;
+			case "/leaverequestlist":
+				leaveRequests(request, response);
 			default:
             	   break;
 			}
@@ -82,6 +85,8 @@ public class EmployeeServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+
 	
 	private void applyLeave(HttpServletRequest request,HttpServletResponse response) throws SQLException,IOException {
 		
@@ -157,7 +162,7 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		  String name=request.getParameter("name");
 		  String passwordString=request.getParameter("password");
 		  String date=request.getParameter("date");
-		  System.out.println(userNameString+" "+name+" "+passwordString+" "+date);
+		  //System.out.println(userNameString+" "+name+" "+passwordString+" "+date);
 		 		  String str="WRONG INPUT TRY AGAIN";
 		  Employee employee=new Employee();
 		  employee.setEmail(userNameString.trim()); employee.setPassword(passwordString);
@@ -185,7 +190,7 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		  String userNameString=request.getParameter("username");
 		  String passwordString=request.getParameter("password");
 		  String messasgeString = "";
-		 
+		  // System.out.println(userNameString);
 		try {
 				messasgeString= dao.empLogin(userNameString, passwordString);
 		} catch (EmployeeException e) {
@@ -205,6 +210,29 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		}
 	}	
 	
+private void leaveRequests(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+	    
+	HttpSession session=request.getSession();
+	String username=(String) session.getAttribute("empusername");
+	
+          java.util.List<LeaveDays> sList=new ArrayList<>();
+        
+		try {
+			//System.out.println(username);
+			sList = dao.employeeRequestedLeaves(username);
+			 // System.out.println(sList);
+			request.setAttribute("listleaves", sList);   	
+		   	RequestDispatcher dispatcher=request.getRequestDispatcher("employeeLeaveReqList.jsp");  	
+		   	dispatcher.forward(request, response);
+		} catch (EmployeeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+            
+   	
+	 
+}
+	
 	private void logout(HttpServletRequest request,HttpServletResponse response) throws SQLException,IOException{
 		HttpSession session=request.getSession();
 		session.removeAttribute("empusername");
@@ -216,11 +244,11 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		HttpSession session=request.getSession();
 		   try {
 			Employee employee=dao.employeeDetails((String)session.getAttribute("empusername"));
-			System.out.println(employee);
+		//	System.out.println(employee);
 			request.setAttribute("employeedetails", employee);
 			RequestDispatcher dispatcher=request.getRequestDispatcher("employeeaccount.jsp");
 			dispatcher.forward(request, response);
-			System.out.println(employee);
+			// System.out.println(employee);
 		} catch (EmployeeException | ServletException e) {
 		     
 			e.printStackTrace();

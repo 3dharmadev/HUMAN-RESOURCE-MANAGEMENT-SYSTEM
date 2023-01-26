@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 		 <meta charset="ISO-8859-1">
+		 
+		 <%@ include file="adminNavbar.jsp" %>
 
 <html>
 <head>
@@ -27,27 +29,13 @@
     #f2>option{
    margin: 0px 50px 0px 50px;
   }
-  input::placeholder {
-    font-size: 22px;
    
-    text-align: center;
-  }
-  body{
-    background-color:#e747e1 ;
-  }
-  h1{
-  color:white;
-  text-align: center;
-  margin-top: 50px;
-  }
-  
-  
-   
+ 
      
 </style>
 <body>
 
-<h1>Add Manager To Department</h1>
+<h1 style="text-align: center;">Add Manager To Department</h1>
 
 <form id="f2" action="addManager" method="post">
   <input type="text"  name="projectManager" placeholder="Enter Existing Employee username as manager" maxlength="30">

@@ -25,7 +25,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
  
 @WebServlet({"/newDepartment","/addProject","/addManager","/addUpdateEmployeedept","/reviewleaveapplication"
-	,"/activateDeactivateAccount","/emplist","/leavereq","/deptlist","/adminlogin","/logout"})
+	,"/activateDeactivateAccount","/emplist","/delete","/leavereq","/deptlist",
+	"/adminlogin","/logout","/deletedept","/deleteleave","/statuslist","/deletestatus"})
 public class AdminServlet extends HttpServlet {
 	
 	private AdminDao dao;
@@ -49,11 +50,29 @@ public class AdminServlet extends HttpServlet {
 			case "/leavereq":
 				leaveReports(request, response);
 				break;
+			case "/delete":
+				deleteEmployee(request, response);
+				break;
+			case "/deletedept":
+				deleteDepartment(request, response);
+				break;
+			case "/deleteleave":
+				deleteLeaveRequest(request, response);
+				break;
 			case "/deptlist":
 				departmentList(request, response);
+				
 			 break;
+			 
+			case "/deletestatus":
+				deletestatus(request, response);
+				break;
+				
 			case "/logout":
 				logout(request, response);
+			case "/statuslist":
+				statusList(request, response);
+				
 			default:
 				break;
 			}
@@ -159,10 +178,10 @@ private void approveEmployeeLeave(HttpServletRequest request,HttpServletResponse
 	
 	int Id=Integer.parseInt(request.getParameter("id").trim());
 	String approval=request.getParameter("approval");
-	  System.out.println(approval);
+	 // System.out.println(approval);
 	try {
 	String message=dao.updateEmployeeLeaveStatus(approval, Id);
-	System.out.println(message);
+	//System.out.println(message);
 		response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
 	} catch ( IllegalStateException | IOException  | DepartmentException e) {
 		 response.sendRedirect("error.jsp?message="+URLEncoder.encode(e.getMessage(),"UTF-8"));
@@ -202,7 +221,12 @@ private void activateOrDeactivateEmployeeAccount(HttpServletRequest request,Http
 	
 	String username=request.getParameter("username");
 	int Id=Integer.parseInt(request.getParameter("ActDeactAcc").trim());
-	System.out.println(username+" "+Id);
+	//System.out.println(username+" "+Id);
+	if(Id==0) {
+		HttpSession session2=request.getSession();
+		session2.removeAttribute("empusername");
+		session2.invalidate();
+	}
 	
 	try {
 	String message=dao.verifyEmpAccount(username.trim(), Id);
@@ -222,12 +246,70 @@ private void departmentList(HttpServletRequest request,HttpServletResponse respo
 	        
 	       dispatcher.forward(request, response);
 }
+private void statusList(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+	java.util.List<Status> status=dao.statusList();
+	//System.out.println(status);
+	request.setAttribute("projectstatuslist", status);
+	RequestDispatcher dispatcher=request.getRequestDispatcher("statuslist.jsp");
+	dispatcher.forward(request, response);
+}
+
+
+
+private void deleteLeaveRequest(HttpServletRequest request,HttpServletResponse response) throws SQLException, UnsupportedEncodingException, IOException {
+	
+	  int leaveid=Integer.parseInt(request.getParameter("leaveid").trim());
+	  //     System.out.println(leaveid);
+	   String message=dao.deleteLeaveReport(leaveid);
+	   response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+}
+
+private void deleteEmployee(HttpServletRequest request,HttpServletResponse response)  {
+	     String username= request.getParameter("username");
+	     //System.out.println(username);
+	     try {
+	    	 
+			String message=dao.deleteEmployee(username);
+			HttpSession session=request.getSession();
+			session.removeAttribute("empusername");
+			session.invalidate();
+			response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+		} catch (EmployeeException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+}
+
+private void deleteDepartment(HttpServletRequest request,HttpServletResponse response)  {
+    String did= request.getParameter("did");
+   // System.out.println(did);
+    try {
+		String message=dao.deleteDepartment(Integer.parseInt(did.trim()));
+		 response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+	} catch (  NumberFormatException | DepartmentException | IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+
+private void deletestatus(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException, IOException  {
+    
+	int id=Integer.parseInt(request.getParameter("sid").trim());
+	//System.out.println(id);
+	String message=dao.deleteOldStatus(id);
+	
+	 response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+	
+}
+
+
 
 private void login(HttpServletRequest request,HttpServletResponse response) throws SQLException,IOException {
 	  String userNameString=request.getParameter("username");
 	  String passwordString=request.getParameter("password");
 	  String messasgeString = "";
-	 
+	  //System.out.println(userNameString);
 		try {
 			messasgeString = dao.loginAdmin(userNameString, Integer.parseInt(passwordString.trim()));
 		} catch (NumberFormatException | EmployeeException e) {
@@ -237,7 +319,7 @@ private void login(HttpServletRequest request,HttpServletResponse response) thro
 	 
 	if( messasgeString.equals("LOGIN SUCCESSFUL!")) {
 		
-	    System.out.print(messasgeString);
+	   // System.out.print(messasgeString);
 	       HttpSession session=request.getSession();
 	       session.setAttribute("username", userNameString);
 	       session.setAttribute("password",passwordString);

@@ -3,13 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	  <%@ include file="adminNavbar.jsp" %>
 <html>
 <head>
-<title>Number of Leaves</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+<title>Leave Report List</title>
+ 
 	<style type="text/css">
        #nav{
        background:  #160046;
@@ -19,7 +17,30 @@
        background: white;
      
        }
-      
+        #leave {
+		  font-family: Arial, Helvetica, sans-serif;
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+		
+		#leave td, #customers th {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		}
+		
+		#leave tr:nth-child(even){background-color: #f2f2f2;}
+		
+		#leave tr:hover {background-color: #ddd;}
+		
+		#leave th {
+		  padding-top: 12px;
+		  padding-bottom: 12px;
+		  text-align: left;
+		  
+		}
+      #top{
+      text-align: center;
+      }
   
 
 	</style>
@@ -32,23 +53,24 @@
 	<div class="row">
 		
 		<div class="container">
-			<h3 class="text-center">Employee Leave Reports</h3>
+			<h3 id="top">Employee Leave Reports</h3>
 			<hr>
 			<div class="container text-left">
 
 
 			</div>
 			<br>
-			<table class="table table-bordered">
+			<table id="leave" class="table table-bordered">
 				<thead>
 					<tr>
-					<th style="color: blue;">Leave ID</th>
-						<th style="color: blue;">Email</th>
-						<th style="color: blue">Leave Start</th>
+					<th style="background-color: #f5d997 ;">Leave ID</th>
+						<th style="background-color: yellow;">Email</th>
+						<th style="background-color: silver;">Leave Start</th>
 						<th style="background-color: #06ffe5;">Leave End</th>
-						<th style="background-color: #ffcf03;">Approval Status</th>
-						<th style="background-color: #008cff;width: 18%;" >Leave Reason</th>	
+						<th style="background-color: #ffcf03;width: 18%;">Approval Status</th>
+						<th style="background-color: #008cff;width: 17%;" >Leave Reason</th>	
 						<th style="background-color: #008cff;width: 21%;" >Grant/Deny Leave Request</th>
+						<th style="background-color: red;color:white;" >DELETE REPORT</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -66,6 +88,8 @@
 			                }"/></td>
 			                  <td> <c:out value="${l.reason}"/></td>
 					<td> <a href="leaveApplicationReview.jsp?id=${l.ID}">Grant/Deny</a></td>
+						<td> <a href="deleteleave?leaveid=<c:out value='${l.ID}' />">DELETE</a></td>
+			
 						 	
 						</tr>
     </c:forEach>

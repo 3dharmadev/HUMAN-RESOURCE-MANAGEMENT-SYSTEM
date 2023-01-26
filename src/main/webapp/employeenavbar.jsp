@@ -13,9 +13,15 @@
        #nav{
        background: #160046;
        }
-       h1{
+       #h1{
        color: #e7e7e7;
        }
+       body {
+        background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20201101/pngtree-3d-rendering-for-display-product-banner-on-website-image_453005.jpg');
+		  background-repeat: no-repeat;
+		  background-attachment: fixed;
+		  background-size: cover;
+		}
        
      #form1>input{
         background-color: rgb(239, 0, 0);
@@ -43,15 +49,14 @@
 	<header>
 		<nav id="nav" class="navbar navbar-expand-md navbar-dark">
 			<div>
-				<a class="navbar-brand"> <h1 id="h1" > Human Resource Management System</h1> </a>
-
+				<a id="h1"> <h1  > Human Resource Management System</h1> </a>
 			</div>
 
 			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/empdetails"	class="nav-link">Your Details</a></li>
-				
-				<li> <a href="applyLeave.jsp" class="nav-link">Request for leave</a> </li>
-				<li> <a href="updateProjectcompletion.jsp" class="nav-link">Update Project Status</a> </li>
+				<li><a href="<%=request.getContextPath()%>/empdetails"	class="nav-link">Your Details</a></li>		
+				<li><a href="<%=request.getContextPath()%>/leaverequestlist"	class="nav-link">Leave History</a></li>		
+				<li> <a href="applyLeave.jsp" class="nav-link">Apply For Leave</a> </li>
+				<li> <a href="updateProjectcompletion.jsp" class="nav-link">Update Working Project Status</a> </li>
 			  <form id="form1" action="logoutemp"><input type="submit"  class="nav-link" value="logout"></form>
 			</ul>
 		</nav>

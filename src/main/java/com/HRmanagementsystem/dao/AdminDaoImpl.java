@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.HRmanagementsystem.DB_util.DB_Connect;
@@ -13,6 +15,9 @@ import com.HRmanagementsystem.exception.EmployeeException;
 import com.HRmanagementsystem.model.Department;
 import com.HRmanagementsystem.model.Employee;
 import com.HRmanagementsystem.model.LeaveDays;
+import com.HRmanagementsystem.model.Status;
+
+
 
 public class AdminDaoImpl implements AdminDao{
 
@@ -22,16 +27,10 @@ public class AdminDaoImpl implements AdminDao{
 		
 		try(Connection conn=DB_Connect.getConnection()){
 		 
-			PreparedStatement ps1=conn.prepareStatement("SELECT FLOOR(RAND() * 999) AS dept FROM department WHERE 'dept' NOT IN (SELECT deptId FROM department) LIMIT 1");
-		    ResultSet rs1=ps1.executeQuery();
-		    int deptId=0;
-		    if(rs1.next()) {
-		    	deptId=rs1.getInt("dept");
-		    }
+		 
 		   
-			 PreparedStatement ps= conn.prepareStatement("INSERT INTO department (deptId,deptName) VALUES(?,?)");
-			    ps.setInt(1, deptId);
-			    ps.setString(2, department.getDepartmentName());
+			 PreparedStatement ps= conn.prepareStatement("INSERT INTO department (deptName) VALUES(?)");
+			    ps.setString(1, department.getDepartmentName());
 //			    System.out.println(department);
 			    int res=ps.executeUpdate();
 			    if(res>0) messageString="Department added successfully.....";
@@ -109,7 +108,7 @@ public class AdminDaoImpl implements AdminDao{
 			} catch (SQLException  e) {
 				
 				System.out.println(e.getMessage());
-			    throw new EmployeeException("Wrong Username or Department Id");
+			    throw new DepartmentException("Wrong Department Id!");
 
 			}
 			
@@ -154,7 +153,7 @@ public class AdminDaoImpl implements AdminDao{
 				    int res=ps.executeUpdate();
 				   
 				    if(res>0 && accountActivation==0) messageString=username+" Employee Account Deactivated &#10003";
-				    else if(res>0 && accountActivation==1) messageString=username+" Employee Successfully Activated &#10003";
+				    else if(res>0 && accountActivation==1) messageString=username+" Employee Account Successfully Activated &#10003";
 				     else   throw new EmployeeException("username not found!");
 
 
@@ -269,6 +268,110 @@ public class AdminDaoImpl implements AdminDao{
 	            System.out.println(e.getMessage());
 	        }
 	        return departments;
+	}
+
+	@Override
+	public String deleteEmployee(String username) throws EmployeeException {
+	
+		String messageString="Wrong Username..";
+		
+		try(Connection conn=DB_Connect.getConnection()){
+
+			
+			Statement statement=conn.createStatement();
+			statement.addBatch("delete from updateStatus where username='"+username+"'");
+			statement.addBatch("delete from  applyLeave where username='"+username+"'");
+			statement.addBatch("UPDATE department set deptManager=NULL WHERE deptManager ='"+username+"'");
+			statement.addBatch("delete from  employee where username='"+username+"'");
+		 
+	 
+           int[] arr =statement.executeBatch();
+//           System.out.println(Arrays.toString(arr));
+		if(arr[arr.length-1]>0) messageString=username+" Deleted Successfully...";
+		
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return messageString;
+
+	
+	}
+
+	@Override
+	public String deleteDepartment(int deptId) throws DepartmentException {
+		String messageString="Something went wrong...";
+		try(Connection connection=DB_Connect.getConnection()){
+		PreparedStatement	ps=connection.prepareStatement("delete from department where deptId=?");
+		ps.setInt(1, deptId);
+		
+	     int res =	ps.executeUpdate();
+	     if(res>0) messageString="Department "+deptId+" Deleted successfully";
+	     
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DepartmentException(e.getMessage());
+		}
+		return messageString;
+	}
+
+	
+	 
+
+	@Override
+	public String deleteLeaveReport(int Id) {
+      String message="Something went wrong..";
+try(Connection connection=DB_Connect.getConnection()){
+	PreparedStatement	ps=connection.prepareStatement("DELETE FROM applyLeave WHERE id=?");
+	ps.setInt(1, Id);
+      int res=	ps.executeUpdate();
+      if(res>0) message="One Leave Application Deleted successfully..";
+} catch (SQLException e) {
+	System.out.println(e.getMessage());
+	e.printStackTrace();
+}
+		return message;
+	}
+
+	@Override
+	public List<Status> statusList() {
+		
+		List<Status > statusList=new ArrayList<>();	
+		  try(Connection conn=DB_Connect.getConnection()){
+	            PreparedStatement ps=conn.prepareStatement("select * from updateStatus");
+
+	            ResultSet rs=ps.executeQuery();
+	          //id | username              | status   | workingdDept
+	            while (rs.next()){
+	            	Status status=new Status();
+	            	status.setId(rs.getInt("id"));
+	             	status.setUsername(rs.getString("username"));
+	             	status.setStatus(rs.getString("status"));
+	             	statusList.add(status);
+
+	            }
+	        }
+	        catch (SQLException e){
+	            System.out.println(e.getMessage());
+	        }
+	        return statusList;
+		
+	}
+
+	@Override
+	public String deleteOldStatus(int id) {
+		   String message="Something went wrong..";
+		   try(Connection connection=DB_Connect.getConnection()){
+		   	PreparedStatement	ps=connection.prepareStatement("DELETE FROM updateStatus WHERE id=?");
+		   	ps.setInt(1, id);
+		         int res=	ps.executeUpdate();
+		         if(res>0) message="Status Deleted successfully..";
+		   } catch (SQLException e) {
+		   	System.out.println(e.getMessage());
+		   	e.printStackTrace();
+		   }
+		   		return message;
 	}
 
 }

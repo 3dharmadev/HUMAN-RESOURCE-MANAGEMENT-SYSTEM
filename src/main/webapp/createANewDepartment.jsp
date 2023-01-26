@@ -2,10 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 		 <meta charset="ISO-8859-1">
+		 
+		 <%@ include file="adminNavbar.jsp" %>
+		 
 
 <html>
 <head>
-<title>Human Resource Management Application</title>
+<title>Create A Department</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -35,11 +38,14 @@
   body{
     background-color:#e747e1 ;
   }
-   
+   h1{
+   color:white;
+   text-align: center;
+   }
      
 </style>
 <body>
-
+     <h1>Add New Department</h1>
 <form id="f2" action="newDepartment" method="post">
     <input type="text" name="name" placeholder="Enter New Department Name">
    

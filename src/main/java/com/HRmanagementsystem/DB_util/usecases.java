@@ -44,10 +44,10 @@ class abc{
 //		System.out.println(employee);
 //	}
 		
-		List<LeaveDays> days=dao.leaveReports();
-		for (LeaveDays leaveDays : days) {
-			System.out.println(leaveDays);
-		}
+//		List<LeaveDays> days=dao.leaveReports();
+//		for (LeaveDays leaveDays : days) {
+//			System.out.println(leaveDays);
+//		}
 		
 //		List<Department> departments=dao.deptList();
 //		for (Department department2 : departments) {
@@ -70,5 +70,12 @@ class abc{
 		//System.out.println(employeeDao.employeeDetails("ram@gmail.com"));
 		//System.out.println(employeeDao.updateProjectCompletionStatus("deba@gmail.com", "50% completed"));
 		//System.out.println(employeeDao.updatePassword("deba@gmail.com", "753014"));
+		
+		//System.out.println(employeeDao.employeeRequestedLeaves("ankit@gmail.com"));
+		
+		//System.out.println(employeeDao.statusHistory("ankit@gmail.com"));
+		//System.out.println(dao.deleteEmployee("ram@gmail.com"));
+		//System.out.println(dao.deleteDepartment(214));
+		System.out.println(dao.deleteLeaveReport(2));
 	}
 }

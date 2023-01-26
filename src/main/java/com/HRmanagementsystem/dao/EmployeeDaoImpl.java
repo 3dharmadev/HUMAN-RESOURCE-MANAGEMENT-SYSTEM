@@ -1,9 +1,17 @@
 package com.HRmanagementsystem.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.HRmanagementsystem.DB_util.DB_Connect;
 import com.HRmanagementsystem.exception.EmployeeException;
@@ -36,7 +44,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
                 ResultSet rs2=ps2.executeQuery();
                 
-			     if(rs2.next())  throw new EmployeeException("account not verified!");
+			     if(rs2.next())  throw new EmployeeException("account not verified or deactivated!");
 
 
 		} catch (SQLException  e) {
@@ -133,7 +141,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		 
 		 
 		   try(Connection conn=DB_Connect.getConnection()){
-		    	PreparedStatement ps =conn.prepareStatement(" INSERT INTO updateStatus VALUES(?,?,(SELECT deptId FROM employee where username=?))");
+		    	PreparedStatement ps =conn.prepareStatement(" INSERT INTO updateStatus(username,status,workingdDept) VALUES(?,?,(SELECT deptId FROM employee where username=?))");
 		    	
 		    	ps.setString(1, username);
 		    	ps.setString(2, status);
@@ -175,5 +183,36 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		 
 		 return message;
 	}
+	
+
+	@Override
+	public List<LeaveDays> employeeRequestedLeaves(String username) throws EmployeeException {
+		 List<LeaveDays>  reqHistory=new ArrayList<>();
+		 
+		try (Connection connection=DB_Connect.getConnection()){
+			
+			PreparedStatement ps=connection.prepareStatement("SELECT * FROM applyLeave WHERE username=?");
+			  ps.setString(1, username);
+			ResultSet rs= ps.executeQuery();
+			
+			while(rs.next()) {
+			  LeaveDays days=new LeaveDays();
+              days.setID(rs.getInt("id"));
+             days.setUserName(rs.getString("username"));
+             days.setLeaveFrom(rs.getString("leaveFrom"));
+             days.setLeaveTo(rs.getString("leaveTo"));
+             days.setApproved(rs.getString("approved"));
+             days.setReason(rs.getString("reason"));
+             reqHistory.add(days);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			 throw new EmployeeException("Username Not Found!");
+		}
+		return reqHistory;
+		
+	}
+
 
 }
