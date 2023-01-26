@@ -1,0 +1,59 @@
+ 
+
+     
+      
+     create table admin( 
+     username varchar(30) primary key,
+      password int
+     );
+     insert into admin VALUES('admin',1234);
+    
+     
+     create table employee(
+     username varchar(30) primary key,
+     name varchar(30) ,
+     password varchar(10),
+     DOB date ,
+     deptId int,
+     accountActive boolean,
+     foreign key (deptId) references department(deptId)
+     );
+     
+     
+     
+     insert into employee value('deba@gmail.com','deba','1112','2000-05-16',NULL);
+     select * from employee;
+     INSERT INTO employee (username,name,password,DOB) VALUES('ram@gmail.com','deba','1234','2000-07-26');
+
+
+     
+     
+	 create table department(
+     deptId int primary key auto_increment,
+     deptName varchar(30) unique not null,
+     assignProject varchar(35) ,
+     deptManager varchar(30) unique
+     );
+     
+ 
+    
+ALTER TABLE department ADD FOREIGN KEY (deptManager) REFERENCES employee(username);
+    
+    
+    create table applyLeave(
+	id int primary key AUTO_INCREMENT,
+      username varchar(30) not null,
+      leaveFrom date not null,
+      leaveTo date not null,
+      approved boolean,
+      reason varchar(100) not null,
+      foreign key(username) references employee(username) );
+    
+    
+    create table updateStatus(
+     id int primary key auto_increment,
+       username varchar(30),
+       status varchar(150) ,
+       workingdDept int,
+       foreign key(workingdDept) references employee(deptId)
+    );
