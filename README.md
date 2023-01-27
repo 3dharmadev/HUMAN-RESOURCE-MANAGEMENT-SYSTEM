@@ -1,4 +1,11 @@
 # Human Resource Management System
+<h4> This project was building using JSP , Servlet ,core java,
+  JDBC,MySQL . The core working of this project is to develop an
+  manager employee application where manager/admin can give projects
+   to employee with perticular department where employee will work
+  on that project qfter completion of task he or she can update 
+  project xompletion status</h4>
+
 
 <h1>Role of Admin:</h1> <br>
 <h4>Admin can add and delete new Departments.</h4>
