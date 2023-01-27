@@ -1,7 +1,7 @@
 # Human Resource Management System
 <h4>The core working of this project is to develop a
    distributed  human resource management application where  admin will add projects to department,
-   under that specific department employee going to work under that project and department manager will guide the employee under project development. Feautures of this project is given below. This was completely build from scratch by https://github.com/3dharmadev.</h4>
+   under that specific department employee going to work under that project and department manager will guide the employee under project development. Features of this project is given below. This was completely build from scratch by https://github.com/3dharmadev.</h4>
 
 
 <h1>Role of Admin:</h1> <br>
