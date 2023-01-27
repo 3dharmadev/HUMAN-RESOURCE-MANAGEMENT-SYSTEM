@@ -1,8 +1,8 @@
 # Human Resource Management System
 <h4> This project was building using JSP , Servlet ,core java,
-  JDBC,MySQL . The core working of this project is to develop an
-  manager employee application where manager/admin can give projects
-   to employee with perticular department where employee will work
+  JDBC,MySQL . The core working of this project is to develop a
+   admin employee distributed application where manager/admin can give projects
+   to employee with perticular department  ,change employee department , add manager to department where employee will work
   on that project qfter completion of task he or she can update 
   project xompletion status</h4>
 
