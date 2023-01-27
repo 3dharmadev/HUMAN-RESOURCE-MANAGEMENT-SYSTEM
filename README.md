@@ -24,11 +24,11 @@
 
 
 <h3>Employee List</h3>
-<img src="[https://user-images.githubusercontent.com/69399810/215173006-87684555-ae58-4b34-89a2-0171d7218eca.png](https://user-images.githubusercontent.com/69399810/215175168-6b081382-ea20-4b10-a24a-53fbf7654139.png)"/>
+<img src="https://user-images.githubusercontent.com/69399810/215175168-6b081382-ea20-4b10-a24a-53fbf7654139.png"/>
 
 
 <h3>Department List</h3>
-<img src="[[https://user-images.githubusercontent.com/69399810/215173006-87684555-ae58-4b34-89a2-0171d7218eca.png](https://user-images.githubusercontent.com/69399810/215175168-6b081382-ea20-4b10-a24a-53fbf7654139.png)](https://user-images.githubusercontent.com/69399810/215175874-528eb8a8-3fd0-47ef-8d31-bf9371690ae4.png)"/>
+<img src="https://user-images.githubusercontent.com/69399810/215175874-528eb8a8-3fd0-47ef-8d31-bf9371690ae4.png"/>
 
 
 
