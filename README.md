@@ -30,7 +30,7 @@
 <h3>Employee List</h3>
 <img src="https://user-images.githubusercontent.com/69399810/215175168-6b081382-ea20-4b10-a24a-53fbf7654139.png"/>
 
-<h3>Project Completion Status Report</h3>
+Project Completion Status Report:
 ![Screenshot (330)](https://user-images.githubusercontent.com/69399810/215177540-28e3e479-a8c8-46f0-bbbd-39a725ffd9ee.png)
 
 
@@ -38,7 +38,7 @@
 <h3>Department List</h3>
 <img src="https://user-images.githubusercontent.com/69399810/215175874-528eb8a8-3fd0-47ef-8d31-bf9371690ae4.png"/>
 
-<h3>Leave Application By Employee</h3>
+ Leave Application By Employee:
 ![Screenshot (327)](https://user-images.githubusercontent.com/69399810/215177269-765c43c2-8089-4336-8b4c-c7dc98697412.png)
 
 
