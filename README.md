@@ -19,6 +19,11 @@
 <h4>Employee can see leave request history. </h4>
 <h4>Employee can update working project status. </h4>
 
+ER Diagram Of MySQL Database:![Uploading Screenshot (305).png…]()
+
+
+
+
 <h3>Root Page</h3>
 
 <img src="https://user-images.githubusercontent.com/69399810/215176739-ebe7942e-b949-45bb-9af5-5474ea1cf503.png"/>
@@ -45,6 +50,8 @@ Project Completion Status Report:
 All Leave Request By Specific Employee:
 
 ![Screenshot (331)](https://user-images.githubusercontent.com/69399810/215178878-7a7a12a7-14e3-496f-9830-3b169ca1626f.png)
+
+
 
 TECH STACK USED: CORE JAVA ,SERVLET, JSP, JDBC, MYSQL
 
