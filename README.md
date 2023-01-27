@@ -1,10 +1,7 @@
 # Human Resource Management System
-<h4> This project was building using JSP , Servlet ,core java,
-  JDBC,MySQL . The core working of this project is to develop a
-   admin employee distributed application where manager/admin can give projects
-   to employee with perticular department  ,change employee department , add manager to department where employee will work
-  on that project qfter completion of task he or she can update 
-  project xompletion status</h4>
+<h4>The core working of this project is to develop a
+   distributed  human resource management application where  admin will add projects to department,
+   under that specific department employee going to work under that project and department manager will guide the employee under project development. Feautures of this project is given below. This was completely build from scratch by https://github.com/3dharmadev.</h4>
 
 
 <h1>Role of Admin:</h1> <br>
@@ -24,4 +21,9 @@
 
 <h3>Admin Login Page</h3>
 <img src="https://user-images.githubusercontent.com/69399810/215173006-87684555-ae58-4b34-89a2-0171d7218eca.png"/>
-![Screenshot (321)](https://user-images.githubusercontent.com/69399810/215173006-87684555-ae58-4b34-89a2-0171d7218eca.png)
+
+
+<h3>Employee List</h3>
+<img src="[https://user-images.githubusercontent.com/69399810/215173006-87684555-ae58-4b34-89a2-0171d7218eca.png](https://user-images.githubusercontent.com/69399810/215175168-6b081382-ea20-4b10-a24a-53fbf7654139.png)"/>
+
+![Screenshot (322)](https://user-images.githubusercontent.com/69399810/215175168-6b081382-ea20-4b10-a24a-53fbf7654139.png)
