@@ -30,9 +30,23 @@
 <h3>Employee List</h3>
 <img src="https://user-images.githubusercontent.com/69399810/215175168-6b081382-ea20-4b10-a24a-53fbf7654139.png"/>
 
+![Screenshot (330)](https://user-images.githubusercontent.com/69399810/215177540-28e3e479-a8c8-46f0-bbbd-39a725ffd9ee.png)
+
+
+
 
 <h3>Department List</h3>
 <img src="https://user-images.githubusercontent.com/69399810/215175874-528eb8a8-3fd0-47ef-8d31-bf9371690ae4.png"/>
+
+
+![Screenshot (327)](https://user-images.githubusercontent.com/69399810/215177269-765c43c2-8089-4336-8b4c-c7dc98697412.png)
+
+
+![Screenshot (328)](https://user-images.githubusercontent.com/69399810/215177356-7d51f1e8-c2f6-4e0c-a2f6-b2bd4429aead.png)
+
+
+
+
 
 
 
