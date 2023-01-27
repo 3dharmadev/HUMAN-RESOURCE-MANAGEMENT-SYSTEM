@@ -21,3 +21,6 @@
 <h4>Employee can also request for leaves. </h4>
 <h4>Employee can see leave request history. </h4>
 <h4>Employee can update working project status. </h4>
+
+<h3>Admin Login Page</h3>
+![Screenshot (321)](https://user-images.githubusercontent.com/69399810/215173006-87684555-ae58-4b34-89a2-0171d7218eca.png)
