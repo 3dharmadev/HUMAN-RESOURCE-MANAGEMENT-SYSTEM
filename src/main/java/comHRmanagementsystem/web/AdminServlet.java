@@ -272,7 +272,7 @@ private void deleteEmployee(HttpServletRequest request,HttpServletResponse respo
 			String message=dao.deleteEmployee(username);
 			HttpSession session=request.getSession();
 			session.removeAttribute("empusername");
-			session.invalidate();
+		
 			response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
 		} catch (EmployeeException | IOException e) {
 			// TODO Auto-generated catch block
