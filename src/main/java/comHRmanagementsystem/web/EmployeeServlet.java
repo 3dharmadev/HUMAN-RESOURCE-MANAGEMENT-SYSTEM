@@ -201,7 +201,7 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		 if(messasgeString.equals("LOGIN SUCCESSFUL!")) {
 
 		       HttpSession session=request.getSession();
-		       session.setAttribute("empusername",userNameString);
+		       session.setAttribute("empusername",userNameString.trim());
 			   response.sendRedirect("employeenavbar.jsp");
 		 }
 			
