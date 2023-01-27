@@ -165,7 +165,7 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		  //System.out.println(userNameString+" "+name+" "+passwordString+" "+date);
 		 		  String str="WRONG INPUT TRY AGAIN";
 		  Employee employee=new Employee();
-		  employee.setEmail(userNameString.trim()); employee.setPassword(passwordString);
+		  employee.setEmail(userNameString.trim()); employee.setPassword(passwordString.trim());
 		 
 		  employee.setName(name);  employee.setDateOfBirth(date);
 		  
@@ -192,7 +192,7 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		  String messasgeString = "";
 		  // System.out.println(userNameString);
 		try {
-				messasgeString= dao.empLogin(userNameString, passwordString);
+				messasgeString= dao.empLogin(userNameString.trim(), passwordString.trim());
 		} catch (EmployeeException e) {
 			messasgeString=e.getMessage();
 			e.printStackTrace();
