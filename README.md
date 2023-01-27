@@ -19,9 +19,10 @@
 <h4>Employee can see leave request history. </h4>
 <h4>Employee can update working project status. </h4>
 
-ER Diagram Of MySQL Database:![Uploading Screenshot (305).png…]()
+ER Diagram Of MySQL Database:
 
 
+![Screenshot (305)](https://user-images.githubusercontent.com/69399810/215180147-6002f7cb-be5f-4deb-a12c-edac583b702c.png)
 
 
 <h3>Root Page</h3>
