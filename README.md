@@ -21,11 +21,6 @@
 
 
 
-ER Diagram:
-
-
-![Screenshot (305)](https://user-images.githubusercontent.com/69399810/215180147-6002f7cb-be5f-4deb-a12c-edac583b702c.png)
-
 
 <h3>Root Page</h3>
 
@@ -54,9 +49,15 @@ All Leave Request By Specific Employee:
 
 ![Screenshot (331)](https://user-images.githubusercontent.com/69399810/215178878-7a7a12a7-14e3-496f-9830-3b169ca1626f.png)
 
+ER Diagram:
 
 
-TECH STACK USED: CORE JAVA ,SERVLET, JSP, JDBC, MYSQL
+![Screenshot (305)](https://user-images.githubusercontent.com/69399810/215180147-6002f7cb-be5f-4deb-a12c-edac583b702c.png)
+
+
+
+
+TECH STACK USED: CORE JAVA ,SERVLET, JSP, JDBC, MYSQL ,TOMCAT 9.0
 
 Contributor: https://github.com/3dharmadev
 
