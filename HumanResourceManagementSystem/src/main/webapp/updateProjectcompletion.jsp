@@ -38,7 +38,7 @@
   <h1 id="head"> update project completion status</h1>
     <form id="sim" action="pcstatus" method="post">  
 
-  Enter Reason:   <input style="width:400px;height:50px;" type="text" name="status" placeholder="Type project completion status" >  
+  Enter message:   <input style="width:400px;height:50px;" type="text" name="status" placeholder="Type project completion status" >  
   
    <input type="submit" style="background-color: blue; color:white;" value="Apply">
      </form>

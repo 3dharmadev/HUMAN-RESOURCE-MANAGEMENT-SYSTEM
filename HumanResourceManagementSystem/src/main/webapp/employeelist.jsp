@@ -96,7 +96,7 @@
 							
 						 	<td> <a href="verifyEmployee.jsp?username=${emp.email}">ENABLE/DISABLE</a></td>
 						 		<td> <a href="addOrUodateEmployeeDepartment.jsp?username=${emp.email}">ADD/UPDATE</a></td>
-						 		<td id="delete"> <a href="delete?username=<c:out value='${emp.email}' />">DELETE</a></td>
+						 		<td id="delete"> <a href="deleteemp?username=<c:out value='${emp.email}' />">DELETE</a></td>
 			
 						</tr>
     </c:forEach>

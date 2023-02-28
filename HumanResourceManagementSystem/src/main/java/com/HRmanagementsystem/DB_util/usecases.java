@@ -76,6 +76,7 @@ class abc{
 		//System.out.println(employeeDao.statusHistory("ankit@gmail.com"));
 		//System.out.println(dao.deleteEmployee("ram@gmail.com"));
 		//System.out.println(dao.deleteDepartment(214));
-		System.out.println(dao.deleteLeaveReport(2));
+		//System.out.println(dao.deleteLeaveReport(2));
+		System.out.println(employeeDao.empLogin("deba@gmail.com", "1234"));
 	}
 }

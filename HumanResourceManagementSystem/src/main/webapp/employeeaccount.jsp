@@ -40,7 +40,7 @@ Employee employee=(Employee) request.getAttribute("employeedetails");
   out.println("<h2>"+"Your Password :"+employee.getPassword()+"</h2>");
   out.println("<h2>"+"Your Date Of Birth :"+employee.getDateOfBirth()+"</h2>");
   if(employee.getDeptId()==0)
-  out.println("<h2>"+"Your Department Id :"+"You don't assigned to any department yet"+"</h2>");
+  out.println("<h2>"+"Your Department Id :"+"You didn't assigned to any department yet"+"</h2>");
   else 
 	  out.println("<h2>"+"Your Department Id :"+employee.getDeptId()+"</h2>");
  %>

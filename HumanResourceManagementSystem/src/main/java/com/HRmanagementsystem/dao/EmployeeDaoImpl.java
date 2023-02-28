@@ -26,14 +26,18 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 		try(Connection conn=DB_Connect.getConnection()){
 			 
-			 PreparedStatement ps= conn.prepareStatement("SELECT * from employee where username=? AND password=?  AND accountActive=1");
-
-			    ps.setString(1,username);
-			    ps.setString(2, password);
+			 PreparedStatement ps= conn.prepareStatement("SELECT * FROM employee WHERE username='"+username+"' AND password='"+password+"'  AND accountActive=1");
+         
+//			    ps.setString(1,username);
+//			    ps.setString(2, password);
+			    System.out.println(ps);
 			    ResultSet rs=ps.executeQuery();
+			    System.out.println(rs);
 			    
 			 if(rs.next()) {
-				return messageString="LOGIN SUCCESSFUL!";
+				 System.out.println("PRESENT");
+				 messageString="LOGIN SUCCESSFUL!";
+				return messageString;
 				 
 			 }
 			 

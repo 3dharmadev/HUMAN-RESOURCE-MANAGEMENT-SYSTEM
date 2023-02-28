@@ -28,7 +28,7 @@ background-color: rgb(54, 60, 68);
 <header>
 		<nav id="nav" class="navbar navbar-expand-md navbar-dark">
 			<div>
-				<a class="navbar-brand"> <h1 > HUMAN RESOURCE MANAGEMENT APPLICATION</h1> </a>
+				<a class="navbar-brand"> <h1 >HUMAN RESOURCE MANAGEMENT APPLICATION</h1> </a>
 
 			</div>
 			

@@ -1,6 +1,6 @@
-package comHRmanagementsystem.web;
+package com.HRmanagementsystem.web;
 
-import java.awt.List;
+ 
 import java.sql.SQLException;
 
 import com.HRmanagementsystem.dao.AdminDao;
@@ -8,12 +8,9 @@ import com.HRmanagementsystem.dao.AdminDaoImpl;
 import com.HRmanagementsystem.exception.DepartmentException;
 import com.HRmanagementsystem.exception.EmployeeException;
 import com.HRmanagementsystem.model.*;
-import com.mysql.cj.Session;
-
-import java.util.*;
-import java.lang.*;
+ 
 import java.net.URLEncoder;
-import java.net.http.WebSocketHandshakeException;
+ 
 import java.io.*;
 
 import javax.servlet.RequestDispatcher;
@@ -25,8 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
  
 @WebServlet({"/newDepartment","/addProject","/addManager","/addUpdateEmployeedept","/reviewleaveapplication"
-	,"/activateDeactivateAccount","/emplist","/delete","/leavereq","/deptlist",
+	,"/activateDeactivateAccount","/emplist","/deleteemp","/leavereq","/deptlist",
 	"/adminlogin","/logout","/deletedept","/deleteleave","/statuslist","/deletestatus"})
+ 
 public class AdminServlet extends HttpServlet {
 	
 	private AdminDao dao;
@@ -40,7 +38,7 @@ public class AdminServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String action=request.getServletPath();
-		  
+		 response.setContentType("text/html");   
 		 
 		  try {
 			switch (action) {
@@ -50,7 +48,7 @@ public class AdminServlet extends HttpServlet {
 			case "/leavereq":
 				leaveReports(request, response);
 				break;
-			case "/delete":
+			case "/deleteemp":
 				deleteEmployee(request, response);
 				break;
 			case "/deletedept":
@@ -86,9 +84,13 @@ public class AdminServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String action=request.getServletPath();
 		 
-		 
+		 response.setContentType("text/html");   
 		  try {
 			switch (action) {
+			
+			case "/adminlogin":
+				adminlogin(request, response);
+				break;
 			case "/newDepartment":
 				 createDepartment(request, response);
 			  break;
@@ -109,9 +111,7 @@ public class AdminServlet extends HttpServlet {
 				case "/activateDeactivateAccount":
 					activateOrDeactivateEmployeeAccount(request, response);
 					break;
-				case "/adminlogin":
-					login(request, response);
-					break;
+				
 			default:
 					break;
 			}
@@ -126,7 +126,7 @@ public class AdminServlet extends HttpServlet {
 	         department.setDepartmentName(departmentName);
 	      String message= dao.addNewDepartment(department);
 	      
-	      response.sendRedirect("message.jsp?message="+URLEncoder.encode(message, "UTF-8"));
+	      response.sendRedirect("message.jsp" +URLEncoder.encode(message, "UTF-8"));
 }
 	
 	
@@ -137,9 +137,9 @@ public class AdminServlet extends HttpServlet {
 		
 		try {
 		String message=dao.addProjectToDepartment(projectNameString, deptId);
-			response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+			response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 		} catch (DepartmentException | IOException e) {
-			 response.sendRedirect("error.jsp?message="+URLEncoder.encode(e.getMessage(),"UTF-8"));
+			 response.sendRedirect("error.jsp" +URLEncoder.encode(e.getMessage(),"UTF-8"));
 			e.printStackTrace();
 		}
 	}
@@ -151,9 +151,9 @@ private void addOrUpdateDepartmentManager(HttpServletRequest request,HttpServlet
 		
 		try {
 		String message=dao.assignManagerToDepartment(projectNameString.trim(), deptId);
-			response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+			response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 		} catch (IOException | EmployeeException e) {
-			 response.sendRedirect("error.jsp?message="+URLEncoder.encode(e.getMessage(),"UTF-8"));
+			 response.sendRedirect("error.jsp" +URLEncoder.encode(e.getMessage(),"UTF-8"));
 			e.printStackTrace();
 		}
 	}
@@ -167,9 +167,9 @@ private void addOrUpdateEmployeeDepartment(HttpServletRequest request,HttpServle
 	
 	try {
 	String message=dao.assignEmployeeToDepartment(projectNameString.trim(), deptId);
-		response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+		response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 	} catch (IOException | EmployeeException | DepartmentException e) {
-		 response.sendRedirect("error.jsp?message="+URLEncoder.encode(e.getMessage(),"UTF-8"));
+		 response.sendRedirect("error.jsp" +URLEncoder.encode(e.getMessage(),"UTF-8"));
 		e.printStackTrace();
 	}
 }
@@ -182,9 +182,9 @@ private void approveEmployeeLeave(HttpServletRequest request,HttpServletResponse
 	try {
 	String message=dao.updateEmployeeLeaveStatus(approval, Id);
 	//System.out.println(message);
-		response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+		response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 	} catch ( IllegalStateException | IOException  | DepartmentException e) {
-		 response.sendRedirect("error.jsp?message="+URLEncoder.encode(e.getMessage(),"UTF-8"));
+		 response.sendRedirect("error.jsp" +URLEncoder.encode(e.getMessage(),"UTF-8"));
 		e.printStackTrace();
 	}
 }
@@ -221,19 +221,19 @@ private void activateOrDeactivateEmployeeAccount(HttpServletRequest request,Http
 	
 	String username=request.getParameter("username");
 	int Id=Integer.parseInt(request.getParameter("ActDeactAcc").trim());
-	//System.out.println(username+" "+Id);
+	 System.out.println(username+" "+Id);
 	if(Id==0) {
 		HttpSession session2=request.getSession();
 		session2.removeAttribute("empusername");
-		session2.invalidate();
+		//session2.invalidate();
 	}
 	
 	try {
 	String message=dao.verifyEmpAccount(username.trim(), Id);
-		response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+		response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 	} catch ( IllegalStateException | IOException   | EmployeeException e) {
 		
-		 response.sendRedirect("error.jsp?message="+URLEncoder.encode(e.getMessage(),"UTF-8"));
+		 response.sendRedirect("error.jsp" +URLEncoder.encode(e.getMessage(),"UTF-8"));
 		e.printStackTrace();
 	}
 }
@@ -248,7 +248,7 @@ private void departmentList(HttpServletRequest request,HttpServletResponse respo
 }
 private void statusList(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 	java.util.List<Status> status=dao.statusList();
-	//System.out.println(status);
+	 System.out.println(status);
 	request.setAttribute("projectstatuslist", status);
 	RequestDispatcher dispatcher=request.getRequestDispatcher("statuslist.jsp");
 	dispatcher.forward(request, response);
@@ -259,21 +259,23 @@ private void statusList(HttpServletRequest request,HttpServletResponse response)
 private void deleteLeaveRequest(HttpServletRequest request,HttpServletResponse response) throws SQLException, UnsupportedEncodingException, IOException {
 	
 	  int leaveid=Integer.parseInt(request.getParameter("leaveid").trim());
-	  //     System.out.println(leaveid);
+	    System.out.println(leaveid);
 	   String message=dao.deleteLeaveReport(leaveid);
-	   response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+	   response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 }
 
 private void deleteEmployee(HttpServletRequest request,HttpServletResponse response)  {
 	     String username= request.getParameter("username");
-	     //System.out.println(username);
+	      System.out.println(username);
 	     try {
 	    	 
 			String message=dao.deleteEmployee(username);
 			HttpSession session=request.getSession();
+			
 			session.removeAttribute("empusername");
-		
-			response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+			
+			
+			response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 		} catch (EmployeeException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -282,10 +284,10 @@ private void deleteEmployee(HttpServletRequest request,HttpServletResponse respo
 
 private void deleteDepartment(HttpServletRequest request,HttpServletResponse response)  {
     String did= request.getParameter("did");
-   // System.out.println(did);
+    System.out.println(did);
     try {
 		String message=dao.deleteDepartment(Integer.parseInt(did.trim()));
-		 response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+		 response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 	} catch (  NumberFormatException | DepartmentException | IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -296,22 +298,22 @@ private void deleteDepartment(HttpServletRequest request,HttpServletResponse res
 private void deletestatus(HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException, IOException  {
     
 	int id=Integer.parseInt(request.getParameter("sid").trim());
-	//System.out.println(id);
+	 System.out.println(id);
 	String message=dao.deleteOldStatus(id);
 	
-	 response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+	 response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 	
 }
 
 
 
-private void login(HttpServletRequest request,HttpServletResponse response) throws SQLException,IOException {
+private void adminlogin(HttpServletRequest request,HttpServletResponse response) throws SQLException,IOException {
 	  String userNameString=request.getParameter("username");
 	  String passwordString=request.getParameter("password");
 	  String messasgeString = "";
-	  //System.out.println(userNameString);
+	  System.out.println(userNameString);
 		try {
-			messasgeString = dao.loginAdmin(userNameString, Integer.parseInt(passwordString.trim()));
+			messasgeString = dao.loginAdmin(userNameString.trim(), Integer.parseInt(passwordString.trim()));
 		} catch (NumberFormatException | EmployeeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -319,7 +321,7 @@ private void login(HttpServletRequest request,HttpServletResponse response) thro
 	 
 	if( messasgeString.equals("LOGIN SUCCESSFUL!")) {
 		
-	   // System.out.print(messasgeString);
+	    System.out.print(messasgeString);
 	       HttpSession session=request.getSession();
 	       session.setAttribute("username", userNameString);
 	       session.setAttribute("password",passwordString);

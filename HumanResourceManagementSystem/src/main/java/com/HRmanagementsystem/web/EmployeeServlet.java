@@ -1,22 +1,19 @@
-package comHRmanagementsystem.web;
+package com.HRmanagementsystem.web;
 
-import java.awt.List;
 import java.io.IOException;
 import java.sql.SQLException;
 
 import com.HRmanagementsystem.dao.EmployeeDao;
 import com.HRmanagementsystem.dao.EmployeeDaoImpl;
 import com.HRmanagementsystem.exception.EmployeeException;
-import com.HRmanagementsystem.model.*;
-import com.mysql.cj.Session;
+import com.HRmanagementsystem.model.Employee;
+import com.HRmanagementsystem.model.LeaveDays;
 
 
 import java.util.*;
 import java.lang.*;
 import java.net.URLEncoder;
-import java.io.*;
 
-import javax.servlet.DispatcherType;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -86,8 +83,7 @@ public class EmployeeServlet extends HttpServlet {
 		}
 	}
 	
-
-	
+   
 	private void applyLeave(HttpServletRequest request,HttpServletResponse response) throws SQLException,IOException {
 		
 		HttpSession session=request.getSession();
@@ -115,11 +111,11 @@ public class EmployeeServlet extends HttpServlet {
 		 
 		 if(message.equals("successfully applied... wait for review")) {
 			
-			 response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+			 response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 		 }
 			
 		 else {
-			 response.sendRedirect("error.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+			 response.sendRedirect("error.jsp" +URLEncoder.encode(message,"UTF-8"));
 		}
 		  
 	}
@@ -145,11 +141,11 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		 
 		 if(message.equals("status updated successfully..")) {
 			
-			 response.sendRedirect("message.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+			 response.sendRedirect("message.jsp" +URLEncoder.encode(message,"UTF-8"));
 		 }
 			
 		 else {
-			 response.sendRedirect("error.jsp?message="+URLEncoder.encode(message,"UTF-8"));
+			 response.sendRedirect("error.jsp" +URLEncoder.encode(message,"UTF-8"));
 		}
 		  
 	}
@@ -177,11 +173,11 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		 
 		 if(str.equals("sign up successful wait for verification")) {
 			
-			 response.sendRedirect("message.jsp?message="+URLEncoder.encode(str,"UTF-8"));
+			 response.sendRedirect("message.jsp" +URLEncoder.encode(str,"UTF-8"));
 		 }
 			
 		 else {
-			 response.sendRedirect("error.jsp?message="+URLEncoder.encode(str,"UTF-8"));
+			 response.sendRedirect("error.jsp" +URLEncoder.encode(str,"UTF-8"));
 		}
 		  
 	}
@@ -206,7 +202,7 @@ private void updateProjectCompletionStatus(HttpServletRequest request,HttpServle
 		 }
 			
 		 else {
-			 response.sendRedirect("error.jsp?message="+URLEncoder.encode(messasgeString,"UTF-8"));
+			 response.sendRedirect("error.jsp" +URLEncoder.encode(messasgeString,"UTF-8"));
 		}
 	}	
 	
@@ -257,4 +253,5 @@ private void leaveRequests(HttpServletRequest request,HttpServletResponse respon
 	
  
 }
+
 
