@@ -1,4 +1,4 @@
-# Human Resource Management System
+# Human Resource Management System (Full Stack Project)
 <h4>The core working of this project is to develop a
     human resource management application where  admin will add projects to department,
    under that specific department employee going to work under that project and employee can request  for leave.Other features of this project is given below. This was completely build from scratch by https://github.com/3dharmadev.</h4>
