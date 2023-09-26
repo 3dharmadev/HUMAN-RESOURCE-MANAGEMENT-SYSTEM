@@ -59,4 +59,3 @@ This is a full-stack web application where administrators can add projects to sp
 
 Contributor: [3dharmadev](https://github.com/3dharmadev)
 
-
