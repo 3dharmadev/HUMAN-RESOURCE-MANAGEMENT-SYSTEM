@@ -1,6 +1,6 @@
 # Human Resource Management System (Full Stack Project)
 
-![Root Page](https://user-images.githubusercontent.com/69399810/215176739-ebe7942e-b949-45bb-9af5-5474ea1cf503.png)
+![HRMS](https://user-images.githubusercontent.com/69399810/215176739-ebe7942e-b949-45bb-9af5-5474ea1cf503.png)
 
 ## Overview
 
@@ -8,21 +8,21 @@ The Human Resource Management System is a comprehensive full-stack Java-based we
 
 ## Role of Admin
 
-- **Department Management:** Admin can add and delete new departments, view department details, and assign managers and projects to departments.
+- Department Management: Admin can add and delete new departments, view department details, and assign managers and projects to departments.
 
-- **Employee Management:** Admin has the authority to activate/deactivate employee accounts, transfer employees between departments, and grant or deny leave requests.
+- Employee Management: Admin has the authority to activate/deactivate employee accounts, transfer employees between departments, and grant or deny leave requests.
 
-- **User Authentication:** Admin can log in and out of the website.
+- User Authentication: Admin can log in and out of the website.
 
-![Admin Login Page](https://user-images.githubusercontent.com/69399810/215173006-87684555-ae58-4b34-89a2-0171d7218eca.png)
+![Admin Login](https://user-images.githubusercontent.com/69399810/215173006-87684555-ae58-4b34-89a2-0171d7218eca.png)
 
 ## Role of Employee
 
-- **Profile Management:** Employees can view their profile details, including department, manager, and project information.
+- Profile Management: Employees can view their profile details, including department, manager, and project information.
 
-- **Leave Requests:** Employees can request leaves, view their leave request history, and track project completion status.
+- Leave Requests: Employees can request leaves, view their leave request history, and track project completion status.
 
-- **User Authentication:** Employees can log in and out of the website.
+- User Authentication: Employees can log in and out of the website.
 
 ![Employee List](https://user-images.githubusercontent.com/69399810/215175168-6b081382-ea20-4b10-a24a-53fbf7654139.png)
 
@@ -34,11 +34,11 @@ The Human Resource Management System is a comprehensive full-stack Java-based we
 
 ### Leave Application By Employee
 
-![Leave Application By Employee](https://user-images.githubusercontent.com/69399810/215177269-765c43c2-8089-4336-8b4c-c7dc98697412.png)
+![Leave Application](https://user-images.githubusercontent.com/69399810/215177269-765c43c2-8089-4336-8b4c-c7dc98697412.png)
 
 ### All Leave Requests By Specific Employee
 
-![All Leave Requests By Specific Employee](https://user-images.githubusercontent.com/69399810/215178878-7a7a12a7-14e3-496f-9830-3b169ca1626f.png)
+![All Leave Requests](https://user-images.githubusercontent.com/69399810/215178878-7a7a12a7-14e3-496f-9830-3b169ca1626f.png)
 
 ## ER Diagram
 
@@ -53,7 +53,10 @@ The Human Resource Management System is a comprehensive full-stack Java-based we
 - MySQL
 - Tomcat 9.0
 
+## About
 
+This is a full-stack web application where administrators can add projects to specific departments, and employees can work on those projects. Employees can also update project status and apply for leave.
 
+Contributor: [3dharmadev](https://github.com/3dharmadev)
 
 
